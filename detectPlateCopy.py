@@ -8,7 +8,7 @@ import numpy as np
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract'
 
-image = cv2.imread(r'C:\Users\tlhar\Desktop\araba\images (1).jpg')
+image = cv2.imread(r'C:\Users\tlhar\Desktop\araba\images (5).jpg')
 finding_cars = cv2.CascadeClassifier(r'C:\Users\tlhar\Desktop\araba\cas4.xml')
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray_image,(5,5),0)
@@ -64,10 +64,11 @@ cv2.waitKey(0)
 
 cut_plate = './7.png'
 
-cv2.imshow("cut", cv2.imread(cut_plate))
 
-text = pytesseract.image_to_string(cut_plate)
-print("Licance Plate : ", text)
+cv2.imshow("cut", cv2.imread(cut_plate))
+if detected ==1:
+    text = pytesseract.image_to_string(cut_plate)
+    print("Licance Plate : ", text)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
